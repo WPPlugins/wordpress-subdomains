@@ -1,0 +1,328 @@
+CHANGELOG
+
+Version 0.6.6
+
+Added Features
+
+* Have your main blog on a subdomain (e.g. http://blog.mydomain.com/)
+* Tag filters, go to a tag page on a subdomain and see only those posts that are on that subdomain.
+
+Bug Fixes
+
+* Fixed big bug introduced by move to wordpress hosting where the database table the plugin needs isn't created 
+* Made some changes to try and reduce memory usage on large sites, more to come
+
+Version 0.6.5
+
+* Moved to hosting on Wordpress.org
+* Minor code improvements
+
+Version 0.6.2
+
+Bugs Fixed
+
+* removed use of get_post as it was causing memory and sql problems
+
+* fixed issues with wordpress 2.8
+
+Version 0.6.1
+
+Added Features
+
+* Add options
+	* Keeping Pages on the subdomain, changed to an option for SEO reasons
+	* Removing archive status from Subdomain root pages
+	
+* Added wps_on_main_index custom field to make tied pages still appear on your main blog
+	Useful if you have the subdomain indexes noindexed for SEO purposes
+	
+Bugs Fixed
+
+* Now creates links for all subdomain pages not just five
+
+* Fixed a daft problem that only put the first layer of sub pages of a subdomain page on that subdomain. Oops
+
+* Fixed a problem regarding comments on 1st tier posts using /%category%/%postname% permalink
+
+* Fixed a problem with filtering posts by category in the admin section
+
+* Included an option to use a custom SQL query if you run into memory issues from large numbers of posts
+
+* Fixed bug with IE and editing Category options
+
+Version 0.6.0
+
+Added Features
+
+* Keep links to non-subdomain pages that are not tied to a category on the subdomain we're viewing
+
+* Date Archive filter, let you choose to have archives filtered down to the category of the subdomain you're on
+
+* Added plugin setting option to turn on/off: Plugin Functionality, Date Archive Filter, Page Subdomains, Author Subdomains
+
+* Display warning and disable plugin if no permalinks setup
+
+* Support permalinks with %category% in
+
+* Add author subdomains
+
+* Custom Link title for Category Subdomains
+
+Bugs Fixed
+
+* Fixed a bug that made SEO All in One plugin work incorrectly on Category Subdomains
+
+Version 0.5.2
+
+Code Clean Up
+
+* Brought the widgets into the main plugin. Having two plugins seemed a bit silly
+
+* Renaming of functions and other things to go with the new name
+
+* Moved old functions to deprecated.php
+
+* Added a bunch of comments
+
+* Removed unneeded code
+
+Bug Fixes
+
+* Couldn't set subdomained or tied pages as parents
+
+* Installation/Update functions are now called properly
+
+
+Version 0.5.1
+
+Added
+
+* Option to Redirect old URLs to new Subdomained urls. Only for Pages and Categories
+
+* Improved Settings area. More improvements to come.
+
+* Changed page custom fields to be prefixed 'wps_', on upgrade old fields should be changed automatically
+
+* Page show all override. Be able to override the page_filter setting for choosen pages using wps_showall custom field
+
+Bug Fixes
+
+* Sub pages of Subdomain pages weren't linked correctly
+
+* Theme selection works again in Wordpress 2.7
+
+* Single tier permalinks caused problems with subdomained pages. Now fixed.
+
+
+Version 0.5.0
+
+Added
+
+* Added automatic upgrade that should copy settings correctly to the new sql fields
+
+* Changed page custom field names
+	subdomain_me -> csd_page_subdomain
+	page_subdomain_theme -> csd_page_theme
+	tie_to_category -> csd_tie_to_category
+	You can change these to whatever you want in category-subdomains.php file
+
+* Changed to only convert root categories.
+	If anyone does want to convert sub categories get in touch.
+
+* Added an option to turn all root categories into subdomains.
+	This categories can be excluded in their settings
+	
+* Rearranged the Plugin settings and added more explaination
+
+* Created a proper Readme file
+
+* Support for sub-pages.
+	1. Sub pages of tied pages now only appear on subdomain parent is tied to
+	2. Sub pages of subdomain pages now link correctly (i.e remain on the subdomain)
+
+* Subdomain root pages now treated as home pages not archive pages
+
+* If on a subdomain bloginfo('name') call will return ' - <subdomain name>' on the end
+
+Bug Fixes
+
+* Removed filter for month links in archive widget that caused broken links. Will fix and replace
+
+* Next / Previous Posts Link, listing next or last X posts, now works correctly.
+
+Version 0.4.5
+
+Added
+
+* Subdomain Pages
+	1. Category Option to only show tied pages or tied and non-tied
+	2. get_pages filter
+		* filter the results dependent on if subdomain and "show only tied" option.
+		* if not subdomain show only non-tied pages
+	3. Plugin option to turn on filter or not
+
+* Site widget, a sidebar widget with a list of the subdomains
+
+* Categories Widget, a sidebar widget with a list of categories in the current subdomain
+
+Bug Fixes
+
+* Post links were pointing to wrong subdomains in some cases due to a query that fetched the wrong id field
+
+* Keep Permalink in subdomain
+	If the post is linked to more than one subdomain have it's permalink point to that subdomain it's listed on.
+	Should save being sent around the different subdomains which would prove odd if using different themes
+
+Development Changes
+
+* Gave all global variables a prefix of "csd_" to avoid any collisions with wordpress or other plugins
+
+* Created classes for subdomain and a list of all subdomains. The subdomain class provides methods for checking if a post is part of that subdomain and taking a normal permalink and converting it to use the subdomain.
+
+* When it is determined we are on a subdomain page/post it's subdomain object is referenced as $wps_this_subdomain giving you easy access to name, slug, children, cat_theme.
+
+* Have init decide if we're in a subdomain page or category
+
+* Do change theme based on $wps_this_subdomain. Much less code
+
+* Split main plugin file into smaller, more managable files
+
+
+Versions Prior to rewrite:
+
+v0.4.4
+
+
+v0.4.3
+Posts with tags and sub-categories three layers deep should now work.
+
+v0.4.2
+Listing posts of sub-categories now works :-)
+
+v0.4.1
+Fixed page redirection and posts in nested categories.
+
+v0.4
+Modified to work with Wordpress 2.5, WON'T work with any earlier versions.
+
+v0.38
+Fixed the install.  Wordpress 2.1 abandoned the userinfo function I was using.  No tables were getting installed.
+
+v0.37
+This might work for Wordpress 2.1
+
+v0.36
+Fixed Preview Pane!
+$timeofchange variable lets you maintain your old url structure if you implement this plugin
+
+v0.35
+Fixed Redirecting old style posts to new ones.
+
+v0.34
+Fixed a bunch of bugs and wp_query mismatches
+
+v0.033
+You can now set your own permalink structure for old posts in case you want to add this to your blog and not lose all your old links.
+
+v0.032
+The plugin now lets you have archives for your categories only.
+
+v0.031
+Added a function to list the categories a post is sitting in.  Wordpress didn't have that.  At least I don't think it did.
+
+v0.030
+Updated plugin to delete the stale cache of rewrite rules for Wordpress versions 2.0.3+
+
+v0.029
+Made www.domain.com/published-name redirect to category.domain.com/published-name
+I think it works
+
+v0.028
+Fixed next and previous
+Fixed ON DUPLICATE KEY
+
+v0.027
+Added functions
+sd_next_post_link
+sd_get_next_post
+
+sd_get_previous_post
+sd_previous_post_link
+            
+<?php sd_previous_post_link('&laquo; %link', '%title', true); ?>
+<?php sd_next_post_link('%link &raquo;', '%title', true); ?>
+
+v0.026
+Fixed post_mod_rewrite rules
+Now you have have whatever permalink structure you want
+
+Update v0.025
+Different category themes actually work now
+
+Update v0.024
+Damn old MySQL's
+Now compatible with mysql 3
+
+Update v0.022
+Added sd_list_cat_pages() to display only pages in the category you're in
+
+Update v0.020 1/27/06
+Revamped a ton of stuff.  
+Changed the whole system to mod rewrite.  
+Added abilities to tie pages to categories.  
+Added the custom theme for categories system
+
+Update v0.015 1/21/06
+Fixed database error bug when submitting a comment.
+
+Update v0.014 1/20/06
+Consistency problems with links is fixed.  All posts' permalinks are tied to one category subdomain
+
+Update v0.013 1/20/06
+Fixed a logout and login as a new user bug.  Come on.  Who has two users on the same blog
+
+Update v0.012 1/19/06
+Fixed a bug in the Next Prev links.  If that wasn't working for you, get the new one.
+Reduced code
+
+Update v0.010 1/13/06
+Added a checkbox on Category Editing pages to let you exclude categories from subdomaining.
+  To make this work in Wordpress < 2.0, you have to add this line your wp-admin/categories.php file
+  open wp-admin/categories.php
+  around line 120, find this:
+    header('Location: categories.php?message=3');
+  add this code BEFORE the above header call:
+    do_action('edit_category', $wpdb->insert_id);
+    
+  I don't know why it's not in there to begin with.  It seems like it should be.  There a call in all the other *_category actions.
+  I hope I didn't mess it up.
+
+  
+Update v0.008
+  Added a filter to wp_login that creates a cross domain cookie.  Booya!  I like the cool stuff.
+
+Update v0.007 1/12/06
+fixed the not logged in on subdomains.
+  I was requesting the properly formatted URL from the server after parsing the url myself.
+  That was stupid.
+  Now I'm saving what to load in init and telling wordpress to do it with a query_string filter
+
+Update v0.006
+fixed it so ALL the links generated have subdomains:
+  -posts
+  -comments
+  -authors
+  -links in feeds
+
+Update v0.005
+Incoming categories are automatically rewritten 
+    blog.com/category/cat_name -> cat_name.blog.com
+If your category structure was different than just blog.com/category/cat_name, edit the $sr_cat_marker
+    $sr_cat_marker = "archives/category/";
+or whatever it is.
+
+Old style posts are also rewritten
+    blog.com/cat_name/post-title -> cat_name.blog.com/post-title
+
+Wild card subdomains that don't match a category are automatically rewritten if $sr_redir_wildcards is TRUE!
+    random.blog.com/whatever -> blog.com/whatever

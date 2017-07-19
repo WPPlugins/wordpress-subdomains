@@ -1,0 +1,35 @@
+TODO
+
+Next Release
+
+* Support for blogs that have their main site on a subdomain
+
+* tags on the domain
+
+* Change page options to graphical using add_meta_box
+
+* Google sitemaps support
+
+* Redirect Old Post links
+
+* Check compatibility with popular plugins
+
+* Create HOWTO for setting up the plugin
+
+Down the Line
+
+* Remove category base
+
+* Move category settings into the plugin settings
+
+* Recent Posts filter
+
+* Calendar filter
+
+* Add plugin options for recent posts and calendar filters
+
+* Subdomains List function
+	provides list like sitelist widget but as just a list
+	will be used in sitelist widget and can be used in themes
+
+* Post has subdomain preference option if you pick more than one subdomain cat - could be tricky
